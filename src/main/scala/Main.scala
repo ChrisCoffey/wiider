@@ -44,7 +44,7 @@ object Main {
                     done = true
                     result = unwindPath(x :: Nil)
                 }
-                case (None, Nil) => Nil
+                case (None, Nil) => { done = true; Nil}
                 case (None, ls) =>
                     println("next level")
                     iterLinks = ls
