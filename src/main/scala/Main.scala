@@ -14,15 +14,14 @@ object Main {
         client.getOptions.setCssEnabled(false)
         client.getOptions.setJavaScriptEnabled(false)
 
-       // crawl("https://en.wikipedia.org/wiki/Decision_table" , "https://en.wikipedia.org/wiki/Flowchart")
-        crawl("https://en.wikipedia.org/wiki/Decision_table" , "https://en.wikipedia.org/wiki/Diagram")
+        crawl("file:///en.wikipedia.org/wiki/Decision_table" , "file:///en.wikipedia.org/wiki/Diagram")
         .foreach(println)
 
     }
 
     def pageHrefs(page: HtmlPage): Seq[Href] =
         page.getAnchors.filter(_.getHrefAttribute.startsWith("/wiki/"))
-        .map(href => s"https://en.wikipedia.org${href.getHrefAttribute}")
+        .map(href => s"file:///en.wikipedia.org${href.getHrefAttribute}")
         .toList
 
     var visited = Map[Href, Href]()
